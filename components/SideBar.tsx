@@ -1,6 +1,7 @@
 "use client";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import NewChat from "./NewChat";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 function SideBar() {
@@ -18,7 +19,7 @@ function SideBar() {
         </div>
       </div>
       {session && (
-        <div className="flex flex-row items-center gap-3 text-white">
+        <div className="flex flex-row border-t-[1px] pt-2 justify-between border-gray-700  items-center gap-3 text-white">
           <Image
             src={session.user?.image!}
             width={30}
@@ -27,6 +28,9 @@ function SideBar() {
             alt="image"
           />
           <p>{session.user?.email}</p>
+          <button onClick={() => signOut()}>
+            <ArrowLeftOnRectangleIcon className="h-6 w-6" />
+          </button>
         </div>
       )}
     </div>
