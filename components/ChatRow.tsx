@@ -40,7 +40,7 @@ function ChatRow({ id }: Props) {
       className={`chatRow justify-center mt-2 ${active && "bg-gray-800"}`}
     >
       <ChatBubbleLeftIcon className="h-5 w-5" />
-      <p className="flex-1 hidden md:inline-flex truncate">
+      <p className="flex-1 hidden md:inline-flex truncate capitalize">
         {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
       </p>
       <TrashIcon
