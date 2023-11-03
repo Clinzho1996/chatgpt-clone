@@ -83,7 +83,7 @@ function ChatInput({ chatId }: Props) {
     }
   };
   return (
-    <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm m-2">
+    <div className="bg-gray-700/50 text-gray-400 rounded-lg mx-2 text-sm m-2 w-full fixed bottom-0 md:relative">
       <form onSubmit={sendMessage} className="p-3 space-x-5 flex">
         <input
           value={prompt}
