@@ -24,7 +24,7 @@ export default async function handler(
   }
 
   //   ChatGPT Query
-  const response = await query(prompt, chatId);
+  const response = await query(prompt, chatId, model);
 
   const message: Message = {
     text: response || "ChatGPT was unable to find an answer for that",
@@ -38,7 +38,7 @@ export default async function handler(
 
   await adminDb
     .collection("users")
-    .doc(session)
+    .doc(session?.user?.email)
     .collection("chats")
     .doc(chatId)
     .collection("messages")

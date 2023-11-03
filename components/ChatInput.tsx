@@ -1,6 +1,6 @@
 "use client";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
@@ -17,7 +17,7 @@ function ChatInput({ chatId }: Props) {
   //   useswr to get model
 
   const model = "text-davinci-003";
-  const sendMessage = async (e: any) => {
+  const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!prompt) return;
 
@@ -51,23 +51,34 @@ function ChatInput({ chatId }: Props) {
     // toast notification to say loading
     const notification = toast.loading("ChatGPT is thinking...");
 
-    await fetch("/api/askQueston", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      await fetch("/api/askQuestion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: input,
+          chatId,
+          model,
+          session,
+        }),
+      }).then(() => {
+        // toast notification to say successful
+        toast.success("ChatGPT has responded!", {
+          id: notification,
+        });
+      });
+
+      console.log("API Request Data: ", {
         prompt: input,
         chatId,
         model,
         session,
-      }),
-    }).then(() => {
-      // toast notification to say successful
-      toast.success("ChatGPT has responded!", {
-        id: notification,
       });
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm m-2">
