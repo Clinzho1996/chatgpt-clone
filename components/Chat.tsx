@@ -29,7 +29,7 @@ function Chat({ chatId }: Props) {
   );
 
   return (
-    <div className="h-screen overflow-y-auto overflow-x-hidden">
+    <div className="h-[78%] md:h-screen overflow-y-auto overflow-x-hidden">
       {messages?.empty && (
         <>
           <p className="mt-10 text-center text-white">
