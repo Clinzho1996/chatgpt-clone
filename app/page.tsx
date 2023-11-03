@@ -6,7 +6,7 @@ import React from "react";
 function HomePage() {
   return (
     <div className="text-white flex flex-col items-center justify-center h-screen px-2">
-      <h1 className="text-5xl font-bold mb-20">ChatGPT</h1>
+      <h1 className="text-5xl font-bold mb-20">Clinton&apos;s AI</h1>
 
       <div className="flex flex-row space-x-2 text-center">
         <div>
@@ -32,12 +32,14 @@ function HomePage() {
             <h2>Capabilities</h2>
           </div>
           <div className="space-y-2">
-            <p className="infoText">Change the ChatGPT Model to use</p>
+            <p className="infoText">
+              Change the Clinton&apos;s AI Model to use
+            </p>
             <p className="infoText">
               Messages are stored in Firebase&apos;s firestore
             </p>
             <p className="infoText">
-              Hot Toast notifications when ChatGPT is thinking!
+              Hot Toast notifications when Clinton&apos;s AI is thinking!
             </p>
           </div>
         </div>
