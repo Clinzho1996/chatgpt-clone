@@ -71,13 +71,6 @@ function ChatInput({ chatId }: Props) {
           id: notification,
         });
       });
-
-      console.log("API Request Data: ", {
-        prompt: input,
-        chatId,
-        model,
-        session,
-      });
     } catch (error) {
       console.error(error);
     }
