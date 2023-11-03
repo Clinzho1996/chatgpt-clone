@@ -13,14 +13,14 @@ function ModelSelection() {
   const customStyles = {
     control: (provided: any) => ({
       ...provided,
-      backgroundColor: "#434654", // Set the background color for the control
+      backgroundColor: "#434654",
       border: `1px solid #434654`,
-      color: "#fff", // Set the border color
+      color: "#fff",
     }),
   };
 
   return (
-    <div>
+    <div className="mt-2">
       <Select
         className="mt-2"
         options={models?.modelOptions}
@@ -29,7 +29,7 @@ function ModelSelection() {
         isSearchable
         isLoading={isLoading}
         menuPosition="fixed"
-        styles={customStyles} // Apply custom styles
+        styles={customStyles}
         onChange={(e) => setModel(e.value)}
       />
     </div>
