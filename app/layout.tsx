@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import Login from "@/components/Login";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import ClientProvider from "@/components/ClientProvider";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +24,13 @@ export default async function RootLayout({
           {!session ? (
             <Login />
           ) : (
-            <div className="flex md:flex">
-              <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem]">
+            <div className="flex flex-col md:flex md:flex-row overflow-y-hidden h-screen">
+              <div className="bg-[#202123] hidden md:block max-w-xs h-screen overflow-y-auto md:min-w-[20rem]">
                 {/* Sidebar */}
                 <SideBar />
+              </div>
+              <div className="bg-[#202123] p-3 md:hidden block">
+                <Navbar />
               </div>
 
               {/* Notification */}

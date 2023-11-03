@@ -9,7 +9,7 @@ import { query, collection, orderBy } from "firebase/firestore";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
 
-function SideBar() {
+function Navbar() {
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
@@ -18,32 +18,11 @@ function SideBar() {
         orderBy("createdAt", "asc")
       )
   );
-
   return (
-    <div className="p-2 hidden flex-col h-screen md:flex-col md:flex">
-      <div className="flex-1">
-        <div>
-          {/* New chat   */}
-          <NewChat />
-          <div className="hidden sm:inline">
-            <ModelSelection />
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            {loading && (
-              <div className="animate-pulse text-center text-white">
-                <p>Loading Chats...</p>
-              </div>
-            )}
-            {/* Map through chat rows */}
-            {chats?.docs.map((chat) => (
-              <ChatRow key={chat.id} id={chat.id} />
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className="flex flex-row justify-between overflow-hidden">
+      <NewChat />
       {session && (
-        <div className="flex flex-row border-t-[1px] pt-2 justify-between border-gray-700  items-center gap-3 text-white">
+        <div className="flex flex-row pt-2 justify-between border-gray-700  items-center gap-3 text-white">
           <Image
             src={session.user?.image!}
             width={30}
@@ -61,4 +40,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default Navbar;
