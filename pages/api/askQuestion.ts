@@ -2,7 +2,7 @@ import query from "@/lib/queryApi";
 import type { NextApiRequest, NextApiResponse } from "next";
 import admin from "firebase-admin";
 import { adminDb } from "@/firebaseAdmin";
-import Bot from "../../public/bot.png";
+import Bot from "../public/bot.png";
 
 type Data = {
   answer: string;
@@ -39,7 +39,7 @@ export default async function handler(
       user: {
         _id: "ChatGPT",
         name: "ChatGPT",
-        avatar: Bot,
+        avatar: "https://links.papareact.com/89k",
       },
     };
 

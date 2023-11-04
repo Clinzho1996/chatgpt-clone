@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { DocumentData } from "firebase/firestore";
-import Image from "next/image";
 import React from "react";
 
 type Props = {
