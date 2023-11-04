@@ -14,6 +14,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "  Clinton's AI - Chatbot created by Dev-Clinton",
   description: "Developed by Confidence Emonena Ochuko",
+  keywords:
+    "ai, chat, confidence, emonena, communication, dashboard, website, mobile app, freelance developer",
 };
 
 export default async function RootLayout({
