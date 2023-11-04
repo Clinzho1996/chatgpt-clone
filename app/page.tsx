@@ -2,17 +2,21 @@ import { SunIcon } from "@heroicons/react/20/solid";
 import { BoltIcon } from "@heroicons/react/24/outline";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import React from "react";
+import Bot from "../public/bot.png";
+import Image from "next/image";
 
 function HomePage() {
   return (
     <div className="text-white flex flex-col items-center justify-center h-screen px-2">
-      <h1 className="text-5xl font-bold mb-20">Clinton&apos;s AI</h1>
-
+      <div className="flex flex-row align-middle mb-20 items-center gap-2">
+        <Image src={Bot} alt="bolt" className="h-20 w-20" />
+        <h1 className="text-4xl font-bold items-center">Clinton&apos;s AI</h1>
+      </div>
       <div className="flex flex-row space-x-2 text-center">
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
             {/* sun icon */}
-            <SunIcon className="h-8 w-8" />
+            <SunIcon className="h-10 w-10 bg-[#1187D6] rounded-full p-2 mb-4" />
             <h2>Examples</h2>
           </div>
           <div className="space-y-2">
@@ -28,7 +32,7 @@ function HomePage() {
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
             {/* sun icon */}
-            <BoltIcon className="h-8 w-8" />
+            <BoltIcon className="h-10 w-10 bg-[#1187D6] rounded-full p-2 mb-4" />
             <h2>Capabilities</h2>
           </div>
           <div className="space-y-2">
@@ -46,7 +50,7 @@ function HomePage() {
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
             {/* sun icon */}
-            <ExclamationTriangleIcon className="h-8 w-8" />
+            <ExclamationTriangleIcon className="h-10 w-10 bg-[#1187D6] rounded-full p-2 mb-4" />
             <h2>Limitations</h2>
           </div>
           <div className="space-y-2">
