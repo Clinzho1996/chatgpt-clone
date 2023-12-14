@@ -8,6 +8,8 @@ import { db } from "@/firebase";
 import { query, collection, orderBy } from "firebase/firestore";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SideBar() {
   const { data: session } = useSession();
@@ -18,6 +20,15 @@ function SideBar() {
         orderBy("createdAt", "asc")
       )
   );
+
+  const handleSignOut = async () => {
+    const result: any = await signOut();
+    if (result?.error) {
+      toast.error("Sign-out failed. Please try again.");
+    } else {
+      toast.success("Sign out successful!");
+    }
+  };
 
   return (
     <div className="p-2 hidden flex-col h-screen md:flex-col md:flex">
@@ -52,11 +63,12 @@ function SideBar() {
             alt="image"
           />
           <p className="hidden md:block">{session.user?.email}</p>
-          <button onClick={() => signOut()}>
+          <button onClick={handleSignOut}>
             <ArrowLeftOnRectangleIcon className="h-6 w-6" />
           </button>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }
