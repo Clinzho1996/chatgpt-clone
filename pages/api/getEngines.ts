@@ -1,27 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import openai from "@/lib/chatgpt";
 
 type Option = {
-  value: string;
-  label: string;
+	value: string;
+	label: string;
 };
 
 type Data = {
-  modelOptions: Option[];
+	modelOptions: Option[];
 };
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
+	req: NextApiRequest,
+	res: NextApiResponse<Data>
 ) {
-  const models = await openai.listModels().then((res) => res.data.data);
+	// Gemini models (expand as needed)
+	const geminiModels: Option[] = [
+		{ value: "gemini-1.5-pro", label: "Gemini 1.5 Pro" },
+		{ value: "gemini-1.5-flash", label: "Gemini 1.5 Flash" },
+		{ value: "gemini-1.0-pro", label: "Gemini 1.0 Pro" },
+	];
 
-  const modelOptions = models.map((model) => ({
-    value: model.id,
-    label: model.id,
-  }));
-
-  res.status(200).json({
-    modelOptions,
-  });
+	res.status(200).json({
+		modelOptions: geminiModels,
+	});
 }

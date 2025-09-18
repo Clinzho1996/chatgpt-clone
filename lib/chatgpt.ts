@@ -1,9 +1,8 @@
-import { Configuration, OpenAIApi } from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const configuration = new Configuration({
-  apiKey: process.env.CHATGPT_API,
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
-const openai = new OpenAIApi(configuration);
+// Example: Create a model instance
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-001" });
 
-export default openai;
+export default model;
